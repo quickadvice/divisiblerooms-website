@@ -1,0 +1,422 @@
+/* DivisibleRooms — Shared Stylesheet
+   Rolling Innovations | Plain CSS, no build step */
+
+:root {
+  --color-primary: #1E6B52;
+  --color-cta: #0E4838;
+  --color-cta-hover: #0A3529;
+  --color-heading: #14503C;
+  --color-body: #333333;
+  --color-muted: #5A5A5A;
+  --color-border: #E2E6E4;
+  --color-tint: #EEF4F1;
+  --color-bg: #FFFFFF;
+
+  --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 72px;
+
+  --radius: 8px;
+  --content-max: 760px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-body);
+  background: var(--color-bg);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Typography */
+
+h1, h2, h3 {
+  color: var(--color-heading);
+  font-weight: 400;
+  margin: 0 0 var(--space-md);
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0 0 var(--space-md);
+  font-size: 16px;
+}
+
+@media (min-width: 640px) {
+  h1 { font-size: 42px; }
+  h2 { font-size: 29px; }
+  h3 { font-size: 20px; }
+  p, li { font-size: 17px; }
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.text-small {
+  font-size: 14px;
+}
+
+/* Header / nav */
+
+.site-header {
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-decoration: none;
+  color: var(--color-heading);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.nav-logo img {
+  height: 36px;
+  width: 36px;
+}
+
+.nav-links {
+  display: none;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-body);
+  font-size: 15px;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--color-primary);
+}
+
+@media (min-width: 720px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+/* Mobile menu toggle */
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+@media (min-width: 720px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+.nav-mobile-panel {
+  display: none;
+  border-top: 0.5px solid var(--color-border);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.nav-mobile-panel.is-open {
+  display: block;
+}
+
+.nav-mobile-panel ul {
+  list-style: none;
+  margin: 0 0 var(--space-sm);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.nav-mobile-panel a {
+  text-decoration: none;
+  color: var(--color-body);
+  font-size: 16px;
+}
+
+@media (min-width: 720px) {
+  .nav-mobile-panel {
+    display: none !important;
+  }
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-block;
+  background-color: var(--color-cta);
+  color: #FFFFFF;
+  padding: 12px 32px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  border: 2px solid #000000;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn:hover {
+  background-color: var(--color-cta-hover);
+}
+
+.btn:visited {
+  color: #FFFFFF;
+}
+
+.btn-sm {
+  padding: 8px 20px;
+  font-size: 13px;
+}
+
+.btn-lg {
+  padding: 14px 40px;
+  font-size: 16px;
+}
+
+/* Hero */
+
+.hero {
+  background: var(--color-tint);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  margin: 0 auto var(--space-lg);
+}
+
+/* Sections */
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+.section-tint {
+  background: var(--color-tint);
+}
+
+.section-border-top {
+  border-top: 0.5px solid var(--color-border);
+}
+
+/* Cards */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: #FFFFFF;
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--space-md);
+}
+
+.card h4 {
+  margin: 0 0 var(--space-xs);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-heading);
+}
+
+.card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* Callout block (tinted) */
+
+.callout {
+  background: var(--color-tint);
+  border-radius: 12px;
+  padding: var(--space-lg) var(--space-md);
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 0.5px solid var(--color-border);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0 0 var(--space-xs);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* Tables */
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 0.5px solid var(--color-border);
+  vertical-align: top;
+}
+
+th {
+  color: var(--color-heading);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Forms */
+
+.form-group {
+  margin-bottom: var(--space-sm);
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-heading);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--color-body);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Utility */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-cta);
+  color: #fff;
+  padding: 12px 20px;
+  z-index: 100;
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.center {
+  text-align: center;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Demo — DivisibleRooms</title>
+<meta name="description" content="Request a demo of DivisibleRooms, the Outlook add-in for booking combined conference spaces.">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">
+      <img src="assets/img/logo.png" alt="DivisibleRooms logo" width="36" height="36">
+      DivisibleRooms
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+      <li><a href="contact.html" class="btn btn-sm">Request a demo</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M3 5H17M3 10H17M3 15H17" stroke="#14503C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-sm">Request a demo</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section">
+    <div class="container">
+      <h1>Ready to book combined spaces in Outlook?</h1>
+      <p>Fill out the form below, and we'll be in touch with more information and to schedule a demo.</p>
+
+      <form id="demo-form" action="https://api.web3forms.com/submit" method="POST" style="max-width:560px; margin-top:var(--space-lg);">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New DivisibleRooms demo request">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Work email</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="organization">Organization</label>
+          <input type="text" id="organization" name="organization" placeholder="Company name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message (optional)</label>
+          <textarea id="message" name="message" placeholder="Tell us about your room configuration&hellip;"></textarea>
+        </div>
+
+        <button type="submit" class="btn">Send request</button>
+        <p id="form-status" class="text-small" role="status" style="margin-top:var(--space-sm);"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <div class="callout" style="background:transparent; padding:0;">
+        <h3>Simple, predictable pricing</h3>
+        <p>One flat annual fee per organization. No per-seat or per-user licensing. All updates and platform support included.</p>
+        <p style="margin-bottom:0;"><strong>Contact Rolling Innovations for pricing.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h3>Support</h3>
+      <p>Questions? Email us at <a href="mailto:info@rollinginnovations.com">info@rollinginnovations.com</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Rolling Innovations | divisiblerooms.com</p>
+  <p><a href="mailto:info@rollinginnovations.com">info@rollinginnovations.com</a></p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  (function () {
+    var form = document.getElementById('demo-form');
+    var status = document.getElementById('form-status');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = 'Sending…';
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.success) {
+            status.textContent = 'Request sent. We\u2019ll be in touch shortly.';
+            form.reset();
+          } else {
+            status.textContent = 'Something went wrong. Please email info@rollinginnovations.com directly.';
+          }
+        })
+        .catch(function () {
+          status.textContent = 'Something went wrong. Please email info@rollinginnovations.com directly.';
+        });
+    });
+  })();
+</script>
+</body>
+</html>

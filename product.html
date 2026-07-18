@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — DivisibleRooms</title>
+<meta name="description" content="See how DivisibleRooms books combined conference spaces in Outlook, what it handles automatically, and how your facilities team monitors bookings day to day.">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="nav-logo" href="index.html">
+      <img src="assets/img/logo.png" alt="DivisibleRooms logo" width="36" height="36">
+      DivisibleRooms
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html" aria-current="page">Product</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="btn btn-sm">Request a demo</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-mobile-panel" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M3 5H17M3 10H17M3 15H17" stroke="#14503C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-sm">Request a demo</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section">
+    <div class="container">
+      <h1>How suite booking works</h1>
+      <p>Users open a meeting invite in Outlook, click the DivisibleRooms task pane, and see available suites for the selected date and time. Select a suite, and the system handles everything else.</p>
+
+      <h3>What DivisibleRooms handles automatically</h3>
+      <ul style="padding-left:24px; line-height:1.8;">
+        <li>Availability check across all rooms in a suite, before it's surfaced as bookable</li>
+        <li>Writing room bookings to the invite when a suite is selected</li>
+        <li>Placing transition window blocker appointments to protect reconfiguration time</li>
+        <li>Updating or removing blockers when a meeting is rescheduled or cancelled</li>
+        <li>Reconciling orphaned blockers on a background cycle</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="container">
+      <h2>Why it's different</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h4>Exchange-native, not Exchange-synced</h4>
+          <p>DivisibleRooms writes directly to Exchange. Competitors such as Tango Reserve and Clebex require a named Exchange Connector or external sync. Native writes mean no sync lag, no connector dependency, no additional Exchange configuration.</p>
+        </div>
+        <div class="card">
+          <h4>Works with Microsoft Teams Rooms</h4>
+          <p>Because bookings are written natively to Exchange room mailboxes, Teams Rooms panels on each physical room display suite bookings and transition windows correctly, with no additional configuration. This is a consequence of the architecture, not a separate integration.</p>
+        </div>
+        <div class="card">
+          <h4>Pure Outlook experience</h4>
+          <p>The add-in appears in the Outlook compose window and disappears when not needed. No separate booking portal, no new login, no interface to learn. Individual room booking continues through Outlook as always.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reporting">
+    <div class="container">
+      <div class="callout">
+        <h3>Built for the team that manages the rooms day to day</h3>
+        <p>Once DivisibleRooms is set up, your IT team steps back. From day to day, it's your facilities or admin-services team who lives in the tools below.</p>
+        <div class="card-grid card-grid-2" style="margin-top:var(--space-md);">
+          <div class="card">
+            <h4>DivisibleRooms Dashboard</h4>
+            <p>See every suite booking and transition window in the DivisibleRooms Dashboard, built for daily use, not deep configuration.</p>
+          </div>
+          <div class="card">
+            <h4>DivisibleRooms Report</h4>
+            <p>A scheduled email, with a CSV export, showing booking activity, transition window compliance, and usage patterns over time.</p>
+          </div>
+        </div>
+        <p class="text-muted text-small" style="margin: var(--space-md) 0 0;">Set the report's recipients, frequency, and timezone once during setup. No manual tracking or spreadsheets needed to stay on top of suite usage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h3>Supported platforms</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th>V1 status</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Classic Outlook for Windows</td>
+              <td>Supported</td>
+              <td>Primary target. Requires Microsoft 365 Business or Enterprise.</td>
+            </tr>
+            <tr>
+              <td>New Outlook for Windows</td>
+              <td>Supported</td>
+              <td>Shares codebase with OWA. Full feature parity.</td>
+            </tr>
+            <tr>
+              <td>Outlook Web Access (OWA)</td>
+              <td>Supported</td>
+              <td>outlook.office365.com and outlook.cloud.microsoft.</td>
+            </tr>
+            <tr>
+              <td>Outlook for Mac</td>
+              <td>V2 target</td>
+              <td>Office.js supports it. Requires explicit platform testing.</td>
+            </tr>
+            <tr>
+              <td>Outlook Mobile</td>
+              <td>V2 investigation</td>
+              <td>Add-in feasibility investigation planned for V2.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-border-top">
+    <div class="container">
+      <h3>Security and permissions</h3>
+      <p>DivisibleRooms is a multi-tenant SaaS application using application-level Microsoft Graph permissions, with full tenant isolation at every layer. Full technical and security documentation, including the IT Security One-Pager and architecture details, is available to qualified evaluators on request.</p>
+    </div>
+  </section>
+
+  <section class="section center">
+    <div class="container">
+      <a href="contact.html" class="btn btn-lg">Request a demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Rolling Innovations | divisiblerooms.com</p>
+  <p><a href="mailto:info@rollinginnovations.com">info@rollinginnovations.com</a></p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
