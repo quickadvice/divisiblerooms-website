@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divisible Room Booking in Outlook, Solved | DivisibleRooms</title>
+<meta name="description" content="Rooms that combine into one space still need to be booked correctly in Exchange. Here's why that's hard, and how DivisibleRooms closes the gap.">
+<link rel="canonical" href="https://divisiblerooms.com/room-booking-solved">
+
+<link rel="icon" href="/assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --brand: #0f6e58;
+    --brand-dark: #0b4f3f;
+    --brand-tint: #eaf3f0;
+    --ink: #16211d;
+    --ink-soft: #445048;
+    --line: #dbe3df;
+    --bg: #ffffff;
+    --bg-alt: #f7f9f8;
+    --max: 760px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  h1,h2,h3{
+    font-family: 'IBM Plex Serif', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.25;
+    margin: 0 0 0.6em 0;
+    color: var(--ink);
+  }
+  h1{ font-size: clamp(2rem, 4.5vw, 2.75rem); }
+  h2{ font-size: clamp(1.4rem, 3vw, 1.75rem); }
+  p{ margin: 0 0 1.1em 0; }
+  a{ color: var(--brand-dark); }
+  .mono{ font-family: 'IBM Plex Mono', monospace; }
+
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* --- nav, matches site-wide pattern --- */
+  header.site-nav{
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 1040px; margin: 0 auto; padding: 18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-inner .logo{ display:flex; align-items:center; gap:10px; font-family:'IBM Plex Serif'; font-weight:600; font-size:1.05rem; color:var(--ink); text-decoration:none; }
+  .nav-inner .logo img{ height:28px; width:28px; }
+  .nav-links{ display:flex; align-items:center; gap:28px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ text-decoration:none; color:var(--ink-soft); font-size:0.95rem; }
+  .nav-links a:hover{ color:var(--brand-dark); }
+  .nav-cta{
+    background:var(--brand); color:#fff !important; padding:9px 18px; border-radius:3px;
+    font-size:0.92rem; font-weight:500;
+  }
+  .nav-toggle{ display:none; }
+
+  /* --- signature motif: the D|R divider bar from the mark --- */
+  .rule-label{
+    display:flex; align-items:center; gap:14px; margin: 2.4em 0 1.4em 0;
+  }
+  .rule-label .bar{ width:1px; height:1.3em; background: var(--brand); flex-shrink:0; }
+  .rule-label span{
+    font-family:'IBM Plex Mono'; font-size:0.78rem; letter-spacing:0.06em;
+    text-transform:uppercase; color: var(--ink-soft);
+  }
+
+  /* --- hero --- */
+  .hero{ padding: 72px 0 48px 0; }
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono'; font-size:0.8rem; letter-spacing:0.05em;
+    color: var(--brand-dark); text-transform:uppercase; margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero .eyebrow .bar{ width:1px; height:1em; background:var(--brand); }
+  .hero p.lede{ font-size:1.15rem; color: var(--ink-soft); max-width: 62ch; }
+  .anchor-phrase{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:'IBM Plex Serif'; font-style:italic; font-size:1.05rem;
+    color: var(--brand-dark); margin-top: 0.6em;
+  }
+  .anchor-phrase .bar{ width:1px; height:1.4em; background:var(--brand); }
+
+  /* --- sections --- */
+  section{ padding: 40px 0; }
+  section.alt{ background: var(--bg-alt); }
+  section.alt .wrap{ padding-top: 8px; padding-bottom: 8px; }
+
+  ul.tight{ padding-left: 1.2em; margin: 0 0 1.1em 0; }
+  ul.tight li{ margin-bottom: 0.5em; }
+
+  /* --- offer callout --- */
+  .offer{
+    background: var(--brand-tint);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--brand);
+    border-radius: 4px;
+    padding: 28px 28px;
+    margin: 1.6em 0;
+  }
+  .offer h2{ font-size: 1.3rem; margin-bottom: 0.5em; }
+  .offer .terms{ display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.2em 0; }
+  .offer .term{ background:#fff; border:1px solid var(--line); border-radius:4px; padding:14px 16px; }
+  .offer .term .pct{ font-family:'IBM Plex Serif'; font-size:1.6rem; color: var(--brand-dark); display:block; }
+  .offer .term .desc{ font-size:0.88rem; color: var(--ink-soft); }
+  .offer .fine{ font-size:0.88rem; color: var(--ink-soft); }
+  @media (max-width: 560px){ .offer .terms{ grid-template-columns: 1fr; } }
+
+  /* --- cta --- */
+  .cta-block{
+    text-align:left; padding: 48px 0 64px 0;
+  }
+  .btn-primary{
+    display:inline-block; background: var(--brand); color:#fff; text-decoration:none;
+    padding: 13px 26px; border-radius:3px; font-weight:500; font-size:1rem;
+  }
+  .btn-primary:hover{ background: var(--brand-dark); }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 28px 0; font-size:0.88rem; color: var(--ink-soft);
+  }
+  footer .wrap{ max-width:1040px; display:flex; gap:8px; flex-wrap:wrap; }
+  footer a{ color: var(--ink-soft); }
+
+  @media (max-width: 640px){
+    .nav-links{ display:none; }
+    .hero{ padding: 48px 0 32px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="logo" href="/index.html">
+      <img src="/assets/img/logo.png" alt="DivisibleRooms">
+      DivisibleRooms
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/product.html">Product</a></li>
+      <li><a href="/av-integration.html">AV &amp; Divisible Rooms</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a href="/contact.html" class="nav-cta">Request a demo</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="bar"></span>For anyone who found this from a forum thread</div>
+      <h1>You've been asking how. Here's the answer.</h1>
+      <p class="lede">Your conference room can open into a larger suite, but Outlook and Exchange have no built-in way to book that dependency. Book the big space. The small rooms don't know to block. Book a small room instead, and the suite doesn't know it's unavailable.</p>
+      <div class="anchor-phrase"><span class="bar"></span>Exchange-native, not Exchange-synced.</div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="rule-label"><div class="bar"></div><span>The problem</span></div>
+      <p>This isn't a one-off complaint. Versions of this exact question have come up across IT and Exchange communities for over a decade, and the answer has consistently been the same: there's no native way to define that a suite depends on its member rooms.</p>
+      <p>To be clear about scope: if your rooms already merge automatically at the AV level, hardware, partition sensors, whatever handles that, this isn't about that. That side already works. The gap is the booking logic: Exchange has no way to express "if the suite is booked, the member rooms are blocked, and vice versa."</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rule-label"><div class="bar"></div><span>How DivisibleRooms fixes it</span></div>
+      <p>DivisibleRooms is an Outlook add-in. A user picks the named suite ("The Boardroom Suite") directly from the compose window. The system takes it from there.</p>
+      <ul class="tight">
+        <li>Checks availability across every room in the suite before showing it as bookable</li>
+        <li>Writes the member room bookings directly to Exchange, as first-class Exchange events</li>
+        <li>Places a transition window around the booking, protecting the time needed to physically reconfigure the space</li>
+        <li>Updates or removes that transition window automatically if the meeting is rescheduled or cancelled</li>
+      </ul>
+      <p>Because the writes go directly to Exchange rather than through a separate sync layer, Microsoft Teams Rooms panels on each physical room reflect suite bookings and transition windows correctly, with no extra configuration.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="rule-label"><div class="bar"></div><span>Why the usual workarounds fall short</span></div>
+      <p>Most organizations handle this manually today. Someone books the suite and has to remember to separately block the member rooms by hand. Or an admin sets up Exchange Transport Rules that don't reliably hold up in practice. Or a MailTip reminds staff to book two rooms themselves and hopes they read it. All of these depend on a person not forgetting a step. DivisibleRooms removes the step.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rule-label"><div class="bar"></div><span>For anyone who found us through a forum thread</span></div>
+      <div class="offer">
+        <h2>A first-year discount, for people who've been asking about this the longest</h2>
+        <p>If a search or a forum reply brought you here, we'd like to make it easy to try DivisibleRooms.</p>
+        <div class="terms">
+          <div class="term">
+            <span class="pct">20% off</span>
+            <span class="desc">your first year, if you get started during our first year as a company.</span>
+          </div>
+          <div class="term">
+            <span class="pct">10% off</span>
+            <span class="desc">your first year, if you're joining us after that.</span>
+          </div>
+        </div>
+        <p class="fine">Applies to year one only; it doesn't change your renewal rate. No code needed, just mention this page when you reach out. The one thing we ask in return: after your first six months using DivisibleRooms, we'd appreciate a short testimonial about how it's working for you. No obligation, and it doesn't affect the discount either way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <div class="wrap">
+      <h2>See how suite booking works in your own tenant.</h2>
+      <p>Reach out and mention this page. We'll take it from there.</p>
+      <a class="btn-primary" href="/contact.html">Request a demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Rolling Innovations</span>
+    <span>|</span>
+    <span>divisiblerooms.com</span>
+    <span>|</span>
+    <a href="mailto:info@rollinginnovations.com">info@rollinginnovations.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
