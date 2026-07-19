@@ -7,7 +7,7 @@ Plain HTML/CSS/JS. No framework, no build step. Deploy as-is to GitHub Pages.
 1. **Web3Forms access key.** `contact.html` has a placeholder:
    `<input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">`
    Replace with a real key from https://web3forms.com, tied to the
-   info@rollinginnovations.com destination inbox per the Build Brief (§8).
+   info@divisiblerooms.com destination inbox per the Build Brief (§8).
    Jason: this is the one manual step standing between this build and a
    working form.
 
